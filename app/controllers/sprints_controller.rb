@@ -1,7 +1,8 @@
-class SprintsController < ApplicationController
+# frozen_string_literal: true
 
+class SprintsController < ApplicationController
   def new
-    @Sprint = Sprint.new(
+    @sprint = Sprint.new(
       iteration_id: SecureRandom.alphanumeric(10),
       name: SecureRandom.alphanumeric(20),
       description: SecureRandom.alphanumeric(40)
@@ -15,11 +16,11 @@ class SprintsController < ApplicationController
   end
 
   def index
-    @Sprints = Sprint.all
+    @sprints = Sprint.all
   end
 
   def show
-    @Sprint = Sprint.find(params.require(:id))
+    @sprint = Sprint.find(params.require(:id))
   end
 
   def update
@@ -34,6 +35,4 @@ class SprintsController < ApplicationController
 
     redirect_to root_path
   end
-
-
 end

@@ -1,7 +1,7 @@
 <h1>Sprints</h1>
 
 <%= button_to("new", new_sprint_path , method: :get) %>
-<%- @Sprints.each do |sprint| %>
+<%- @sprints.each do |sprint| %>
   id:<%= sprint.id %> -
   iteration-id:<%= sprint.iteration_id %> -
   name:<%= sprint.name %> -
