@@ -1,0 +1,12 @@
+<h1>Sprints</h1>
+
+<%= button_to("new", new_sprint_path , method: :get) %>
+<%- @Sprints.each do |sprint| %>
+  id:<%= sprint.id %> -
+  iteration-id:<%= sprint.iteration_id %> -
+  name:<%= sprint.name %> -
+  description:<%= sprint.description %>
+  <%= link_to("details", sprint_path(sprint)) %>
+  <%= link_to("delete", sprint_path(sprint), data: { turbo_method: :delete }) %>
+  </br>
+<%- end %>

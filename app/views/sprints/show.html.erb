@@ -1,0 +1,5 @@
+<h1>Sprint <%= @Sprint.id %></h1>
+
+ <%= link_to("home", root_path) %></br>
+
+<%= render :partial => 'sprint_data_form', locals: {sprint: @Sprint, method: :patch} %>
