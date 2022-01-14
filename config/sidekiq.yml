@@ -2,7 +2,7 @@
 
 :schedule:
   trigger_sprint:
-    cron: '0 * * * * *'   # Runs once per minute
+    cron: '0 */1 * * * *'   # Runs once per hour
     class: SprintWorker
 
 
