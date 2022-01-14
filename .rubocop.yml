@@ -1,5 +1,9 @@
+require: rubocop-rails
 AllCops:
   Exclude:
     - 'bin/bundle'
+    - 'db/schema.rb'
+  NewCops: enable
+  SuggestExtensions: false
 Style/Documentation:
   Enabled: false
