@@ -1,0 +1,10 @@
+# config/sidekiq.yml
+
+:schedule:
+  trigger_sprint:
+    cron: '0 0 */1 * * *'   # Runs once per hour
+    args: ['0 0 */1 * * *']
+    class: SprintWorker
+
+
+
