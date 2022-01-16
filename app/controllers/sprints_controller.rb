@@ -16,7 +16,7 @@ class SprintsController < ApplicationController
   end
 
   def index
-    @sprints = Sprint.all
+    @sprints = Sprint.all.order(created_at: :desc)
   end
 
   def show
