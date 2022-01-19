@@ -5,12 +5,19 @@ class SprintsController < ApplicationController
     @sprint = Sprint.new(
       iteration_id: SecureRandom.alphanumeric(10),
       name: SecureRandom.alphanumeric(20),
-      description: SecureRandom.alphanumeric(40)
+      description: SecureRandom.alphanumeric(40),
+      member_data: {some: "data"},
+      start_time: Time.current,
+      end_time: Time.current + 2.weeks
     )
   end
 
   def create
-    Sprint.create!(params.require(:sprint).permit!)
+    myparams = params.require(:sprint).permit(
+      :iteration_id, :name, :description, :member_data, :start_time, :end_time
+    )
+
+    Sprint.create!(myparams)
 
     redirect_to root_path
   end

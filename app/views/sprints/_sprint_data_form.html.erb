@@ -7,6 +7,14 @@
       <td><%= f.text_field :name %></td>
     </tr><tr>
       <td><%= f.text_field :description %></td>
+   </tr><tr>
+      <td><%= f.text_area :member_data %></td>
+    </tr>
+    <tr>
+      <td><%= f.datetime_select :start_time %></td>
+    </tr>
+    <tr>
+      <td><%= f.datetime_select :end_time %></td>
     </tr>
   </table>
 <%= f.button :submit %>
