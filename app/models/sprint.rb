@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Sprint < ApplicationRecord
-  encrypts :description, :name, :description
-  validates :iteration_id, :name, :description, presence: true
+  validates :iteration_id, :name, :description, :member_data, :start_time, :end_time, presence: true
+  encrypts :description, :name, :iteration_id, :member_data
+  serialize :member_data, Hash
 end
