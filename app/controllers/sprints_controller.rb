@@ -8,7 +8,7 @@ class SprintsController < ApplicationController
       description: SecureRandom.alphanumeric(40),
       member_data: { cb: 1, mk: 1, f: 0.4 },
       start_time: Time.current,
-      end_time: Time.current + 2.weeks
+      end_time: 2.weeks.from_now
     )
   end
 

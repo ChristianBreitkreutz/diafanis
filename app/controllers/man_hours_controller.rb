@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ManHoursController < ApplicationController
-  before_action :set_man_hour, only: %i[ show edit update destroy ]
+  before_action :set_man_hour, only: %i[show edit update destroy]
 
   # GET /man_hours or /man_hours.json
   def index
@@ -7,8 +9,7 @@ class ManHoursController < ApplicationController
   end
 
   # GET /man_hours/1 or /man_hours/1.json
-  def show
-  end
+  def show; end
 
   # GET /man_hours/new
   def new
@@ -16,8 +17,7 @@ class ManHoursController < ApplicationController
   end
 
   # GET /man_hours/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /man_hours or /man_hours.json
   def create
@@ -25,7 +25,7 @@ class ManHoursController < ApplicationController
 
     respond_to do |format|
       if @man_hour.save
-        format.html { redirect_to man_hour_url(@man_hour), notice: "Man hour was successfully created." }
+        format.html { redirect_to man_hour_url(@man_hour), notice: 'Man hour was successfully created.' }
         format.json { render :show, status: :created, location: @man_hour }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class ManHoursController < ApplicationController
   def update
     respond_to do |format|
       if @man_hour.update(man_hour_params)
-        format.html { redirect_to man_hour_url(@man_hour), notice: "Man hour was successfully updated." }
+        format.html { redirect_to man_hour_url(@man_hour), notice: 'Man hour was successfully updated.' }
         format.json { render :show, status: :ok, location: @man_hour }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +52,20 @@ class ManHoursController < ApplicationController
     @man_hour.destroy
 
     respond_to do |format|
-      format.html { redirect_to man_hours_url, notice: "Man hour was successfully destroyed." }
+      format.html { redirect_to man_hours_url, notice: 'Man hour was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_man_hour
-      @man_hour = ManHour.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def man_hour_params
-      params.require(:man_hour).permit(:date, :max, :planned_absences, :unplanned_absences)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_man_hour
+    @man_hour = ManHour.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def man_hour_params
+    params.require(:man_hour).permit(:date, :max, :planned_absences, :unplanned_absences)
+  end
 end

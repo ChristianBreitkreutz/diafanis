@@ -6,6 +6,4 @@ Rails.application.routes.draw do
   draw :sidekiq
   root 'sprints#index'
   resources :sprints
-
-
 end
