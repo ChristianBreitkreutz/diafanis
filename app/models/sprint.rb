@@ -2,6 +2,5 @@
 
 class Sprint < ApplicationRecord
   validates :iteration_id, :name, :description, :member_data, :start_time, :end_time, presence: true
-  encrypts :description, :name, :iteration_id, :member_data
-  serialize :member_data, Hash
+  encrypts :description, :name, :iteration_id, deterministic: true
 end

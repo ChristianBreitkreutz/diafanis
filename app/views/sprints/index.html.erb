@@ -5,7 +5,8 @@
   id:<%= sprint.id %> -
   iteration-id:<%= sprint.iteration_id %> -
   name:<%= sprint.name %> -
-  description:<%= sprint.description %>
+  description:<%= sprint.description %></br>
+  <%= sprint.member_data %>
   <%= link_to("details", sprint_path(sprint)) %>
   <%= link_to("delete", sprint_path(sprint), data: { turbo_method: :delete }) %>
   </br>

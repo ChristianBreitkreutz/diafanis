@@ -6,7 +6,7 @@ class SprintsController < ApplicationController
       iteration_id: SecureRandom.alphanumeric(10),
       name: SecureRandom.alphanumeric(20),
       description: SecureRandom.alphanumeric(40),
-      member_data: {some: "data"},
+      member_data: {cb: 1, mk: 1, f: 0.4},
       start_time: Time.current,
       end_time: Time.current + 2.weeks
     )
