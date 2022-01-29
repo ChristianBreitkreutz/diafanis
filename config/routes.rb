@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   draw :sidekiq
   root 'sprints#index'
   resources :sprints
+  resources :sprint_data, only: %i[new create index]
 end
