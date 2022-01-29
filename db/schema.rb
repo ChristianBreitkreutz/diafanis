@@ -10,18 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_29_193137) do
+ActiveRecord::Schema.define(version: 2022_01_29_225053) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "lanes", force: :cascade do |t|
-    t.string "name", null: false
-    t.integer "ticket_count", null: false
-    t.integer "story_points", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
 
   create_table "man_hours", force: :cascade do |t|
     t.datetime "date", precision: 6, null: false
@@ -34,6 +26,13 @@ ActiveRecord::Schema.define(version: 2022_01_29_193137) do
 
   create_table "sprint_data", force: :cascade do |t|
     t.datetime "date", precision: 6, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "sprint_data_column_definitions", force: :cascade do |t|
+    t.string "name"
+    t.integer "position"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

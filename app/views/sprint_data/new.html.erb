@@ -1,28 +1,6 @@
 <h1>new</h1>
 
 <%= button_to "back to overview", sprint_data_path, method: :get %>
-  <%#= @sprint_date %>
-<%#= form_for sprint_date, method: method do |f| %>
-<!--  <table>-->
-<!--    <tr>-->
-<!--      <td>iteration_id:<%#= f.text_field :iteration_id %></td>-->
-<!--    </tr><tr>-->
-<!--    <td>name:<%#= f.text_field :name %></td>-->
-<!--  </tr><tr>-->
-<!--    <td>description:<%#= f.text_field :description %></td>-->
-<!--  </tr><tr>-->
-<!--    <td>member_data:<%#= f.text_area :member_data %></td>-->
-<!--  </tr>-->
-<!--    <tr>-->
-<!--      <td>start_time:<%#= f.datetime_select :start_time %></td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--      <td>end_time:<%#= f.datetime_select :end_time %></td>-->
-<!--    </tr>-->
-<!--  </table>-->
-  <%#= f.button :submit %>
-<%# end %>
-
 
 
 <%= simple_form_for(@sprint_date, url: sprint_data_path) do |f| %>
@@ -33,9 +11,12 @@
     <%= f.input :date %>
   </div>
   <%= f.simple_fields_for :sprint_data_columns do |column| %>
-    <%= column.input :name %>
+    <p>
+      <%= column.object.name %>
+    <%= column.input :name, :as => :hidden, :input_html => { :value => column.object.name } %>
     <%= column.input :ticket_count %>
     <%= column.input :story_points %>
+    </p>
   <% end %>
 
   <div class="form-actions">

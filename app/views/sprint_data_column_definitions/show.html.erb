@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @sprint_data_column_definition %>
+
+<div>
+  <%= link_to "Edit this sprint data column definition", edit_sprint_data_column_definition_path(@sprint_data_column_definition) %> |
+  <%= link_to "Back to sprint data column definitions", sprint_data_column_definitions_path %>
+
+  <%= button_to "Destroy this sprint data column definition", @sprint_data_column_definition, method: :delete %>
+</div>

@@ -1,0 +1,2 @@
+class SprintDataColumnDefinition < ApplicationRecord
+end

@@ -1,5 +1,6 @@
 <h1>sprint data</h1>
 <%= button_to "create new Sprint Data view", new_sprint_datum_path, method: :get %>
+<%= button_to "create new column names", sprint_data_column_definitions_path, method: :get %>
 <ol>
 
 <%- @sprint_data.each do |sprint_date| %>
