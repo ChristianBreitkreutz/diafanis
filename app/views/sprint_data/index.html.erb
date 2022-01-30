@@ -1,18 +1,27 @@
 <h1>sprint data</h1>
-<%= button_to "create new Sprint Data view", new_sprint_datum_path, method: :get %>
-<%= button_to "create new column names", sprint_data_column_definitions_path, method: :get %>
-<ol>
+<%= button_to "create/edit new Sprint Data view", new_sprint_datum_path, method: :get %>
+<%= button_to "create/edit new column names", sprint_data_column_definitions_path, method: :get %>
 
-<%- @sprint_data.each do |sprint_date| %>
-<li>date: '<%=sprint_date.date %>' </li>
-    <ul>
-      <% sprint_date.sprint_data_columns.each do |column| %>
-      <li>
-        name: <%=column.name %> –
-        ticket_count: <%=column.ticket_count %> –
-        story_points: <%=column.story_points %>
-      </li>
-       <% end %>
-    </ul>
+<table border="1" style="border-collapse: collapse;">
+  <th>
+    <% @column_names.each do |column| %>
+      <td><%= column %></td>
+    <% end %>
+  </th>
+  <%- @sprint_data.each do |sprint_date| %>
+      <tr>
+        <td><%=sprint_date.date %></td>
+        <% sprint_date.sprint_data_columns.each do |column| %>
+          <td>
+            <table border="2" style="border-collapse: collapse;" bordercolor = blue>
+              <tr>
+                <td>tc: <%= column.ticket_count%></td>
+                <td>sp: <%= column.story_points%></td>
+              </tr>
+            </table >
+          </td>
+        <% end %>
+      </tr>
 <% end %>
-</ol>
+</table>
+* <i>tc = ticket_count; sp = story_points</i>
