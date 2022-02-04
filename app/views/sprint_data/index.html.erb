@@ -11,10 +11,11 @@
   <%- @sprint_data.each do |sprint_date| %>
       <tr>
         <td><%=sprint_date.date %></td>
-        <% sprint_date.sprint_data_columns.each do |column| %>
+        <% sprint_date.sprint_data_columns_sorted.each do |column| %>
           <td>
             <table border="2" style="border-collapse: collapse;" bordercolor = blue>
               <tr>
+                <tr><%=column.sprint_data_column_definition.name %></tr>
                 <td>tc: <%= column.ticket_count%></td>
                 <td>sp: <%= column.story_points%></td>
               </tr>
