@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddSprintDataColumnDefinitionToSprintDataColumn < ActiveRecord::Migration[7.0]
   def change
     change_table :sprint_data_columns do |t|

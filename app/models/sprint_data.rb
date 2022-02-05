@@ -7,7 +7,6 @@ class SprintData < ApplicationRecord
   accepts_nested_attributes_for :sprint_data_columns
 
   def sorted_sprint_data_columns
-    sprint_data_columns.joins(:sprint_data_column_definition).order("sprint_data_column_definitions.position").all
+    sprint_data_columns.joins(:sprint_data_column_definition).order('sprint_data_column_definitions.position').all
   end
-
 end

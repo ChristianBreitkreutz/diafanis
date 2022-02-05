@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SetDefaultValuesForSprintDataColumn < ActiveRecord::Migration[7.0]
   def change
     change_column_null(:sprint_data_columns, :ticket_count, false, 0)
