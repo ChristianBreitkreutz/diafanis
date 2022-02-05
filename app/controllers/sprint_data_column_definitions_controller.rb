@@ -56,7 +56,6 @@ class SprintDataColumnDefinitionsController < ApplicationController
   # DELETE /sprint_data_column_definitions/1 or /sprint_data_column_definitions/1.json
   def destroy
     @sprint_data_column_definition.destroy
-    SprintDataColumn.where(name: @sprint_data_column_definition.name).destroy_all
 
     respond_to do |format|
       format.html do

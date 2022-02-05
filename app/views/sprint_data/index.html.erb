@@ -10,18 +10,20 @@
   </th>
   <%- @sprint_data.each do |sprint_date| %>
       <tr>
-        <td><%=sprint_date.date %></td>
-        <% sprint_date.sprint_data_columns_sorted.each do |column| %>
+        <td><%=sprint_date.date.strftime("%y %m %d - %H:%M") %></td>
+        <% sprint_date.sorted_sprint_data_columns.each do |column| %>
           <td>
             <table border="2" style="border-collapse: collapse;" bordercolor = blue>
               <tr>
-                <tr><%=column.sprint_data_column_definition.name %></tr>
+<!--                <tr><%#=column.sprint_data_column_definition.name %></tr>-->
                 <td>tc: <%= column.ticket_count%></td>
                 <td>sp: <%= column.story_points%></td>
               </tr>
             </table >
           </td>
         <% end %>
+        <td><%= button_to("edit", edit_sprint_datum_path(sprint_date), method: :get )%></td>
+        <td><%= link_to("delete", sprint_datum_path(sprint_date), data: { turbo_method: :delete }) %></td>
       </tr>
 <% end %>
 </table>

@@ -10,15 +10,19 @@
   <div class="form-inputs">
     <%= f.input :date %>
   </div>
-  <%= f.simple_fields_for :sprint_data_columns_sorted do |column| %>
-    <p><%= column.object%></p>
-    <p>
-      <%#= column.object&.sprint_data_column_definition_id %>
-    <%#= column.input :sprint_data_column_definitions_id, :as => :hidden, :input_html => { :value => column.object.sprint_data_column_definition_id } %>
-    <%#= column.input :ticket_count %>
-    <%#= column.input :story_points %>
-    </p>
-  <% end %>
+  <table border = 1 style="border-collapse: collapse;">
+    <tr>
+    <%= f.simple_fields_for :sprint_data_columns do |column| %>
+      <td>
+        <i>Position #: <%= column.object&.position %></i></br>
+        <b><%= column.object&.name %></b>
+      <%= column.input :sprint_data_column_definition_id, :as => :hidden, :input_html => { :value => column.object.sprint_data_column_definition_id } %>
+      <%= column.input :ticket_count %>
+      <%= column.input :story_points %>
+      </td>
+    <% end %>
+    </tr>
+  </table>
 
   <div class="form-actions">
     <%= f.button :submit %>
