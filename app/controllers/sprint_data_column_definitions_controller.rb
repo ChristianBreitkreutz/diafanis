@@ -20,7 +20,7 @@ class SprintDataColumnDefinitionsController < ApplicationController
   def edit; end
 
   # POST /sprint_data_column_definitions or /sprint_data_column_definitions.json
-  def create # rubocop:disable Metrics/MethodLength
+  def create
     @sprint_data_column_definition = SprintDataColumnDefinition.new(sprint_data_column_definition_params)
 
     respond_to do |format|
@@ -38,7 +38,7 @@ class SprintDataColumnDefinitionsController < ApplicationController
   end
 
   # PATCH/PUT /sprint_data_column_definitions/1 or /sprint_data_column_definitions/1.json
-  def update # rubocop:disable Metrics/MethodLength
+  def update
     respond_to do |format|
       if @sprint_data_column_definition.update(sprint_data_column_definition_params)
         format.html do
