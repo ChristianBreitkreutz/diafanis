@@ -1,9 +1,7 @@
 <h1>new</h1>
+<%= link_to "back to #{Sprint.find(params[:sprint_id]).name}", sprint_path(params[:sprint_id]) %>
 
-<%= button_to "back to overview", sprint_data_path, method: :get %>
-
-
-<%= simple_form_for(@sprint_date, url: sprint_data_path) do |f| %>
+<%= simple_form_for(@sprint_date, url: sprint_sprint_data_path) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 

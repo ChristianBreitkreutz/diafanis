@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_05_133815) do
+ActiveRecord::Schema.define(version: 2022_02_07_184526) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 2022_02_05_133815) do
     t.datetime "date", precision: 6, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "sprint_id"
+    t.index ["sprint_id"], name: "index_sprint_data_on_sprint_id"
   end
 
   create_table "sprint_data_column_definitions", force: :cascade do |t|
@@ -80,4 +82,5 @@ ActiveRecord::Schema.define(version: 2022_02_05_133815) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "sprint_data", "sprints"
 end

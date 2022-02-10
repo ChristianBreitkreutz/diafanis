@@ -1,13 +1,23 @@
 <h1>Sprints</h1>
 
-<%= button_to("new", new_sprint_path , method: :get) %>
-<%- @sprints.each do |sprint| %>
-  id:<%= sprint.id %> -
-  iteration-id:<%= sprint.iteration_id %> -
-  name:<%= sprint.name %> -
-  description:<%= sprint.description %></br>
-  <%= sprint.member_data %>
-  <%= link_to("details", sprint_path(sprint)) %>
-  <%= link_to("delete", sprint_path(sprint), data: { turbo_method: :delete }) %>
-  </br>
-<%- end %>
+<table>
+  <tr>
+    <td><%= button_to("New Sprint", new_sprint_path , method: :get) %></td>
+    <td><%= button_to "create/edit new column names", sprint_data_column_definitions_path, method: :get %></td>
+  </tr>
+</table>
+<table border="1" style="border-collapse: collapse;">
+  <tr>
+    <th>Sprint name</th>
+    <th>description</th>
+    <th colspan="2">actions</th>
+  </tr>
+  <%- @sprints.each do |sprint| %>
+    <tr>
+      <td><%= sprint.name %></td>
+      <td><%= sprint.description %></td>
+      <td><%= link_to("details", sprint_path(sprint)) %></td>
+      <td><%= link_to("delete", sprint_path(sprint), data: { turbo_method: :delete }) %></td>
+    </tr>
+  <%- end %>
+</table>

@@ -1,5 +1,34 @@
-<h1>Sprint <%= @sprint.id %></h1>
+<h1><%=@sprint.name %></h1>
 
- <%= link_to("home", root_path) %></br>
 
 <%= render :partial => 'sprint_data_form', locals: { sprint: @sprint, method: :patch} %>
+
+<hr class="solid">
+<%= link_to 'add sprint data', new_sprint_sprint_datum_path(sprint_id: @sprint.id) %>
+
+<table border="1" style="border-collapse: collapse;">
+  <tr>
+    <th>date</th>
+    <% @sprint_data.first&.sorted_column_names&.each do |column| %>
+    <th><%= column.name %>-<%= column.position %></th>
+  <% end %>
+    <th colspan="2">action</th>
+  </tr>
+  <%- @sprint_data.each do |sprint_date| %>
+    <tr>
+      <td><%=sprint_date.date.strftime("%y %m %d - %H:%M") %></td>
+      <% sprint_date.sorted_sprint_data_columns.each do |column| %>
+        <td>
+          <table border="2" style="border-collapse: collapse;" bordercolor = blue>
+            <tr>
+              <td>tc: <%= column.ticket_count%></td>
+              <td>sp: <%= column.story_points%></td>
+            </tr>
+          </table >
+        </td>
+      <% end %>
+      <td><%= button_to("edit", edit_sprint_sprint_datum_path(sprint_id: @sprint.id, id: sprint_date.id), method: :get )%></td>
+      <td><%= button_to "Destroy", sprint_sprint_datum_path(sprint_id: @sprint.id, id: sprint_date.id), method: :delete %></td>
+    </tr>
+  <% end %>
+</table>

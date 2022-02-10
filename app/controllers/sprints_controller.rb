@@ -17,9 +17,15 @@ class SprintsController < ApplicationController
       :iteration_id, :name, :description, :member_data, :start_time, :end_time
     )
 
-    Sprint.create!(myparams)
+    sprint = Sprint.new(myparams)
 
-    redirect_to root_path
+    if sprint.valid?
+      sprint.save
+      redirect_to root_path
+    else
+      @sprint = sprint
+      redirect_to new_sprint_path
+    end
   end
 
   def index
@@ -28,13 +34,14 @@ class SprintsController < ApplicationController
 
   def show
     @sprint = Sprint.find(params.require(:id))
+    @sprint_data = SprintData.where(sprint: @sprint)
   end
 
   def update
     Sprint.find(params.require(:id)).update!(
       params.require(:sprint).permit!
     )
-    redirect_to root_path
+    redirect_to sprint_path(id: params.require(:id))
   end
 
   def destroy
