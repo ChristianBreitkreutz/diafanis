@@ -10,19 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_07_184526) do
+ActiveRecord::Schema.define(version: 2022_02_11_145930) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "man_hours", force: :cascade do |t|
-    t.datetime "date", precision: 6, null: false
-    t.integer "max", null: false
-    t.integer "planned_absences", null: false
-    t.integer "unplanned_absences", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
 
   create_table "sprint_data", force: :cascade do |t|
     t.datetime "date", precision: 6, null: false
