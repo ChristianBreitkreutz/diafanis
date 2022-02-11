@@ -1,0 +1,15 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Sprint data column definitions</h1>
+<%= button_to "to sprint overview", sprints_path, method: :get %>
+
+<div id="sprint_data_column_definitions">
+  <% @sprint_data_column_definitions.each do |sprint_data_column_definition| %>
+    <%= render sprint_data_column_definition %>
+    <p>
+      <%= link_to "Show this sprint data column definition", sprint_data_column_definition %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New sprint data column definition", new_sprint_data_column_definition_path %>

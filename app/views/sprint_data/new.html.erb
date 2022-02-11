@@ -1,0 +1,28 @@
+<h1>new</h1>
+<%= link_to "back to #{Sprint.find(params[:sprint_id]).name}", sprint_path(params[:sprint_id]) %>
+
+<%= simple_form_for(@sprint_date, url: sprint_sprint_data_path) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :date %>
+  </div>
+  <table border = 1 style="border-collapse: collapse;">
+    <tr>
+    <%= f.simple_fields_for :sprint_data_columns do |column| %>
+      <td>
+        <i>Position #: <%= column.object&.position %></i></br>
+        <b><%= column.object&.name %></b>
+      <%= column.input :sprint_data_column_definition_id, :as => :hidden, :input_html => { :value => column.object.sprint_data_column_definition_id } %>
+      <%= column.input :ticket_count %>
+      <%= column.input :story_points %>
+      </td>
+    <% end %>
+    </tr>
+  </table>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

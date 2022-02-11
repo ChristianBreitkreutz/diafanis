@@ -1,0 +1,27 @@
+<h1>sprint data</h1>
+
+<table border="1" style="border-collapse: collapse;">
+  <tr>
+    <td>date</td>
+    <% @column_names.each do |column| %>
+      <th><%= column %></th>
+    <% end %>
+    <td colspan="2">action</td>
+  </tr>
+  <%- @sprint_data.each do |sprint_date| %>
+      <tr>
+        <td><%=sprint_date.date.strftime("%y %m %d - %H:%M") %></td>
+        <% sprint_date.sorted_sprint_data_columns.each do |column| %>
+          <td>
+            <table border="2" style="border-collapse: collapse;" bordercolor = blue>
+              <tr>
+                <td>tc: <%= column.ticket_count%></td>
+                <td>sp: <%= column.story_points%></td>
+              </tr>
+            </table >
+          </td>
+        <% end %>
+      </tr>
+<% end %>
+</table>
+* <i>tc = ticket_count; sp = story_points</i>

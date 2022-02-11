@@ -10,10 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_14_133552) do
+ActiveRecord::Schema.define(version: 2022_02_11_145930) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "sprint_data", force: :cascade do |t|
+    t.datetime "date", precision: 6, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "sprint_id"
+    t.index ["sprint_id"], name: "index_sprint_data_on_sprint_id"
+  end
+
+  create_table "sprint_data_column_definitions", force: :cascade do |t|
+    t.string "name"
+    t.integer "position"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "sprint_data_columns", force: :cascade do |t|
+    t.bigint "sprint_data_id"
+    t.integer "ticket_count", default: 0, null: false
+    t.integer "story_points", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "sprint_data_column_definition_id"
+    t.index ["sprint_data_column_definition_id"], name: "index_sprint_data_columns_on_sprint_data_column_definition_id"
+    t.index ["sprint_data_id"], name: "index_sprint_data_columns_on_sprint_data_id"
+  end
 
   create_table "sprints", force: :cascade do |t|
     t.string "iteration_id", null: false
@@ -21,6 +47,9 @@ ActiveRecord::Schema.define(version: 2022_01_14_133552) do
     t.string "description", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "start_time", precision: 6
+    t.datetime "end_time", precision: 6
+    t.jsonb "member_data", default: "--- {}\n", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -44,4 +73,5 @@ ActiveRecord::Schema.define(version: 2022_01_14_133552) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "sprint_data", "sprints"
 end
