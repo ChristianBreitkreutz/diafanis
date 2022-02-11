@@ -1,23 +1,36 @@
-<h1>Sprints</h1>
-
-<table>
-  <tr>
-    <td><%= button_to("New Sprint", new_sprint_path , method: :get) %></td>
-    <td><%= button_to "create/edit new column names", sprint_data_column_definitions_path, method: :get %></td>
-  </tr>
-</table>
-<table border="1" style="border-collapse: collapse;">
-  <tr>
-    <th>Sprint name</th>
-    <th>description</th>
-    <th colspan="2">actions</th>
-  </tr>
-  <%- @sprints.each do |sprint| %>
-    <tr>
-      <td><%= sprint.name %></td>
-      <td><%= sprint.description %></td>
-      <td><%= link_to("details", sprint_path(sprint)) %></td>
-      <td><%= link_to("delete", sprint_path(sprint), data: { turbo_method: :delete }) %></td>
-    </tr>
-  <%- end %>
-</table>
+<div class="row">
+  <div class="col-12 d-flex justify-content-between">
+    <h1>Sprints</h1>
+    <%= button_to("new", new_sprint_path, class: 'btn btn-primary', method: :get) %>
+    <%= button_to "create/edit new column names", sprint_data_column_definitions_path, method: :get %><
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Iteration</th>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @sprints.each do |sprint| %>
+          <tr>
+            <th scope="row"><%= sprint.id %></th>
+            <td><%= sprint.iteration_id %></td>
+            <td><%= sprint.name %></td>
+            <td><%= sprint.description %></td>
+            <td>
+              <%= link_to("details", sprint_path(sprint), class: 'btn btn-secondary') %>
+              <%= link_to("delete", sprint_path(sprint), class: 'btn btn-danger', data: { turbo_method: :delete }) %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
